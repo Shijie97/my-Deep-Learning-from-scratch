@@ -1,1 +1,1 @@
-# my-Deep-Learning-from-scratch
+# my-deep-learning-from-scratch
