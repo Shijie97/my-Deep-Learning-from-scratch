@@ -80,3 +80,4 @@ plt.ylabel = 'loss'
 plt.legend(loc = 'upper right')
 plt.ylim(0, 1.0)
 plt.show()
+

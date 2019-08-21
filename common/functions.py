@@ -18,14 +18,17 @@ def cross_entropy_error(y, t):
     return -np.sum(t * np.log(y + 1e-7)) / N
 
 def softmax(x):
-    if x.ndim == 2:
-        x = x.T
-        x = x - np.max(x, axis=0)
-        y = np.exp(x) / np.sum(np.exp(x), axis=0)
-        return y.T
+    x_max = np.max(x, axis = 1).reshape(-1, 1)
+    try:
+        x = x - x_max
+    except RuntimeWarning:
+        print(x)
+        print(x.shape)
+    x = np.exp(x)
+    sigma = np.sum(x, axis = 1).reshape(-1, 1)
+    res = x / sigma
+    return res
 
-    x = x - np.max(x) # 溢出对策
-    return np.exp(x) / np.sum(np.exp(x))
 
 def sigmoid_grad(x):
     return (1.0 - sigmoid(x)) * sigmoid(x)

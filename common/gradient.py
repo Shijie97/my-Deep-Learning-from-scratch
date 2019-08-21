@@ -28,3 +28,4 @@ def numerical_gradient(f, x):
         x[it.multi_index] = temp_idx
         it.iternext()
     return grad
+
