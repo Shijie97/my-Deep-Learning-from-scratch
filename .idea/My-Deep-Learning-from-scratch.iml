@@ -6,8 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/common" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ch05" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ch06" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ch07" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (NumpyPrograming)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

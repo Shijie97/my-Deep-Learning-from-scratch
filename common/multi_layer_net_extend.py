@@ -87,7 +87,7 @@ class MultiLayerNetExtend:
 
     # 前向传播，返回x
     # 注意，predict函数不包括softmax_error那一层
-    def predict(self, x, for_trainning):
+    def predict(self, x, for_trainning = False):
         for layer_name, layer in self.layers.items():
             if 'BatchNormalization' in layer_name:
                 x = layer.forward(x, for_trainning)
@@ -97,7 +97,7 @@ class MultiLayerNetExtend:
         return x
 
     # 从头到尾遍历（即forward），并求出loss
-    def loss(self, x, t, for_trainning, use_weight_decay):
+    def loss(self, x, t, for_trainning = False, use_weight_decay = False):
         y = self.predict(x, for_trainning)
         weight_decay = 0  # 累加器初始化
 
@@ -125,7 +125,7 @@ class MultiLayerNetExtend:
     # 1. 前向传播，即调用loss函数，注意，这里的前向传播是要经过softmax_error这一层的，因为要根据误差求梯度，如果求精度就不需要，因为权重已经固定不变了
     # 2. 反向传播，即逆序调用backward函数
     # 3. 求梯度，利用optimizer去求
-    def gradient(self, x, t, use_weight_decay):
+    def gradient(self, x, t, use_weight_decay = False):
 
         # 前向传播，注意求梯度这个函数仅用于训练数据集的时候，测试的时候是不会调用这个函数滴
         self.loss(x, t, for_trainning = True, use_weight_decay = use_weight_decay)
